@@ -96,7 +96,7 @@ class SplineHardminSequence(Estimator):
     def __str__(self):
         return f"SplineHardMin_layer{self.layer_idx}"
 
-    def __call__(self, stats: Dict[str, np.ndarray]) -> List[np.ndarray]:
+    def __call__(self, stats: Dict[str, np.ndarray]) -> np.ndarray:
         gate_preactivations = stats["spline_gate_preactivations"]
         gate_weight_norms = stats["spline_gate_weight_norms"]
 
