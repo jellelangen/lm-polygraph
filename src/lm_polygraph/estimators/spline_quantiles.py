@@ -42,7 +42,7 @@ class SplineQuantile(Estimator):
         self.return_negative = return_negative
 
     def __str__(self):
-        return f"SplineQ10_layer{self.layer_idx}"
+        return f"SplineQ{self.quantile}_layer{self.layer_idx}_{self.agg}"
 
     def __call__(self, stats: Dict[str, np.ndarray]) -> List[np.ndarray]:
         """

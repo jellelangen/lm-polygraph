@@ -94,7 +94,7 @@ class SplineHardminSequence(Estimator):
         self.return_negative = return_negative
 
     def __str__(self):
-        return f"SplineHardMin_layer{self.layer_idx}"
+        return f"SplineHardMin_layer{self.layer_idx}_{self.agg}"
 
     def __call__(self, stats: Dict[str, np.ndarray]) -> np.ndarray:
         gate_preactivations = stats["spline_gate_preactivations"]
