@@ -92,8 +92,8 @@ def register_default_stat_calculators(
             GreedyProbsCalculator,
             "lm_polygraph.defaults.stat_calculator_builders.default_GreedyProbsCalculator",
             {
-                "output_attentions": output_attentions,
-                "output_hidden_states": output_hidden_states,
+                "output_attentions": False,
+                "output_hidden_states": False,
             },
         )
         _register(SplineGateGeometryCalculator)
