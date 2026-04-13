@@ -60,7 +60,7 @@ class SplineHardMin(Estimator):
         return out
 
 
-class SplineHardminSequence(Estimator):
+class SplineHardMinSequence(Estimator):
     """
     sequence-level hard minimum distance to a gate hyperplane at a chosen layer.
 
@@ -87,10 +87,11 @@ class SplineHardminSequence(Estimator):
                 "spline_gate_preactivations",
                 "spline_gate_weight_norms",
             ],
-            "token",
+            "sequence",
         )
         self.layer_idx = layer_idx
         self.eps = eps
+        self.agg = agg
         self.return_negative = return_negative
 
     def __str__(self):

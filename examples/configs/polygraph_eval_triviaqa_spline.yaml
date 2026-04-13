@@ -1,0 +1,39 @@
+hydra:
+  run:
+    dir: ${cache_path}/${task}/${model.path}/${dataset}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+defaults:
+  - model: qwen25-15b
+  - estimators: spline_estimators
+  - stat_calculators: spline_calculators
+  - base_processing_triviaqa
+  - _self_
+
+cache_path: ./workdir/output
+save_path: '${hydra:run.dir}'
+instruct: false
+task: qa
+
+generation_metrics:
+  - name: AccuracyMetric
+
+dataset: ['LM-Polygraph/triviaqa', 'continuation']
+text_column: input
+label_column: output
+train_split: train
+eval_split: test
+max_new_tokens: 20
+load_from_disk: false
+multiref: true
+trust_remote_code: false
+size: 10000
+generation_params:
+  stop_strings:
+    - "\n"
+
+subsample_eval_dataset: 800   
+ignore_exceptions: false
+batch_size: 4
+
+seed:
+  - 1

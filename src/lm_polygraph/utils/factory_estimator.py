@@ -4,6 +4,9 @@ from lm_polygraph.estimators import *
 
 def load_simple_estimators(name: str, config):
     SIMPLE_ESTIMATORS = [
+        SplineLocalComplexitySequence,
+        SplineQuantileSequence,
+        SplineHardMinSequence,
         MaximumSequenceProbability,
         Perplexity,
         MeanTokenEntropy,

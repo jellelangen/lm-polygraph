@@ -42,7 +42,8 @@ class SplineQuantile(Estimator):
         self.return_negative = return_negative
 
     def __str__(self):
-        return f"SplineQ{self.quantile}_layer{self.layer_idx}_{self.agg}"
+        return f"SplineQ{self.quantile}_layer{self.layer_idx}"
+
 
     def __call__(self, stats: Dict[str, np.ndarray]) -> List[np.ndarray]:
         """
@@ -118,15 +119,16 @@ class SplineQuantileSequence(Estimator):
                 "spline_gate_preactivations",
                 "spline_gate_weight_norms",
             ],
-            "token",
+            "sequence",
         )
         self.layer_idx = layer_idx
         self.quantile = quantile
         self.eps = eps
+        self.agg = agg
         self.return_negative = return_negative
 
     def __str__(self):
-        return f"SplineQ10_layer{self.layer_idx}"
+        return f"SplineQ{self.quantile}_{self.agg}_layer{self.layer_idx}"
 
     def __call__(self, stats: Dict[str, np.ndarray]) -> np.ndarray:
         """

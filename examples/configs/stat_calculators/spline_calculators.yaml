@@ -1,0 +1,12 @@
+- auto
+- name: SplineGateGeometryCalculator
+  builder: lm_polygraph.defaults.stat_calculator_builders.default_SplineGateGeometryCalculator
+  cfg:
+    include_eos: false
+    eps: 1.0e-12
+  stats:
+    - spline_gate_preactivations
+    - spline_gate_weights
+    - spline_gate_weight_norms
+    - spline_generation_token_spans
+  dependencies: []

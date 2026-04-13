@@ -87,6 +87,6 @@ from .cocoa import CocoaMSP, CocoaPPL, CocoaMTE
 from .rauq import RAUQ
 from .csl import CSL
 from .semantic_density import SemanticDensity
-from .spline_quantiles import SplineQuantile
-from .spline_hardmin import SplineHardMin
+from .spline_quantiles import SplineQuantile, SplineQuantileSequence 
+from .spline_hardmin import SplineHardMin, SplineHardMinSequence
 from .spline_local_complexity import SplineLocalComplexity, SplineLocalComplexitySequence
