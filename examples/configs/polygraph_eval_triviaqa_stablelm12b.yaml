@@ -3,8 +3,8 @@ hydra:
     dir: ${cache_path}/${task}/${model.path}/triviaqa/${now:%Y-%m-%d}/${now:%H-%M-%S}
 
 defaults:
-  - model: mistral-7b-instruct-v0.2
-  - estimators: default_plus_spline_mistral7b
+  - model: stablelm-2-12b
+  - estimators: default_plus_spline_stablelm12b
   - stat_calculators: spline_calculators
   - base_processing_triviaqa
   - _self_

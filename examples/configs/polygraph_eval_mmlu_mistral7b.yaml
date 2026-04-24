@@ -1,42 +1,36 @@
 hydra:
   run:
-    dir: ${cache_path}/${task}/${model.path}/triviaqa/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    dir: ${cache_path}/${task}/${model.path}/mmlu/${now:%Y-%m-%d}/${now:%H-%M-%S}
 
 defaults:
   - model: mistral-7b-instruct-v0.2
   - estimators: default_plus_spline_mistral7b
   - stat_calculators: spline_calculators
-  - base_processing_triviaqa
   - _self_
-
-generation_metrics:
-  - name: AccuracyMetric
-  - name: AlignScore
-    kwargs:
-      target_is_claims: true
 
 cache_path: ./workdir/output
 save_path: '${hydra:run.dir}'
 instruct: false
 task: qa
 
-dataset: ['LM-Polygraph/triviaqa', 'continuation']
+dataset: ['LM-Polygraph/mmlu', 'continuation']
 text_column: input
 label_column: output
 train_split: train
 eval_split: test
-max_new_tokens: 20
+max_new_tokens: 3
 load_from_disk: false
-multiref: true
-trust_remote_code: false
 size: 10000
 generation_params:
   stop_strings:
     - "\n"
 
+generation_metrics:
+  - name: AccuracyMetric
+
 subsample_eval_dataset: -1
 ignore_exceptions: false
-batch_size: 2
+batch_size: 1
 
 seed:
   - 1
