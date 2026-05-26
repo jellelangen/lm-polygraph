@@ -1,17 +1,19 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
-def load_model(model_path: str, device_map: str):
+def load_model(model_path: str, device_map: str, max_memory: dict = None):
+    if max_memory is not None:
+        max_memory = {int(k) if str(k).isdigit() else k: v 
+                      for k, v in max_memory.items()}
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         trust_remote_code=True,
         device_map=device_map,
+        max_memory=max_memory,
         attn_implementation="eager",
     )
     model.eval()
-
     return model
-
 
 def load_tokenizer(model_path: str, add_bos_token: bool = True):
     tokenizer = AutoTokenizer.from_pretrained(

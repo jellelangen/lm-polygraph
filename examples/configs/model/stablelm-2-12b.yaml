@@ -7,4 +7,7 @@ path_to_load_script: model/default_causal.py
 
 load_model_args:
   device_map: auto
+  max_memory:
+    0: "8GiB"
+    1: "38GiB"
 load_tokenizer_args: {}
