@@ -1,15 +1,20 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
-def load_model(model_path: str, device_map: str, max_memory: dict = None):
+def load_model(model_path: str, device_map: str, max_memory: dict = None, torch_dtype: str = "auto"):
+    import torch
     if max_memory is not None:
         max_memory = {int(k) if str(k).isdigit() else k: v 
                       for k, v in max_memory.items()}
+    if isinstance(torch_dtype, str) and torch_dtype != "auto":
+        torch_dtype = getattr(torch, torch_dtype)
+
     model = AutoModelForCausalLM.from_pretrained(
         model_path,
         trust_remote_code=True,
         device_map=device_map,
         max_memory=max_memory,
+        torch_dtype=torch_dtype,
         attn_implementation="eager",
     )
     model.eval()

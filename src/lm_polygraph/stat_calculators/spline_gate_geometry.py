@@ -215,9 +215,9 @@ class SplineGateGeometryCalculator(StatCalculator):
 
         for _, gate_proj in gate_modules:
             w = gate_proj.weight.detach().cpu()
-            gate_weights.append(w.numpy())
+            gate_weights.append(w.float().numpy())
             gate_weight_norms.append(
-                w.norm(p=2, dim=1).clamp_min(self.eps).numpy()
+                w.norm(p=2, dim=1).clamp_min(self.eps).float().numpy()
             )
 
         # Build sample -> layer -> [T_i, D_ff] arrays
@@ -271,7 +271,7 @@ class SplineGateGeometryCalculator(StatCalculator):
                         dim=0,
                     )
 
-                per_sample_layers.append(aligned.numpy())
+                per_sample_layers.append(aligned.float().numpy())
 
             spline_gate_preactivations.append(per_sample_layers)
 

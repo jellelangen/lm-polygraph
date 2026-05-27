@@ -144,11 +144,11 @@ class SemanticMatrixCalculator(StatCalculator):
             P = torch.stack(P_tensors)
 
         # Convert to numpy arrays on CPU at the end of computation
-        E = E.cpu().numpy()
-        C = C.cpu().numpy()
-        E_logits = E_logits.cpu().numpy()
-        C_logits = C_logits.cpu().numpy()
-        P = P.cpu().numpy()
+        E = E.float().cpu().float().numpy()
+        C = C.float().cpu().float().numpy()
+        E_logits = E_logits.float().cpu().float().numpy()
+        C_logits = C_logits.float().cpu().float().numpy()
+        P = P.float().cpu().float().numpy()
 
         return {
             "semantic_matrix_entail": E,

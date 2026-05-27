@@ -106,15 +106,15 @@ class InferCausalLMCalculator(StatCalculator):
             cut_sequences.append(tokens)
 
             logits = all_logits[i, :length, :].cpu()
-            cut_logits.append(logits.numpy())
+            cut_logits.append(logits.float().numpy())
 
             log_probs = logits.log_softmax(-1)
-            cut_log_probs.append(log_probs.numpy())
+            cut_log_probs.append(log_probs.float().numpy())
             lls.append([log_probs[j, tokens[j]] for j in range(len(log_probs))])
 
             cut_alternatives.append([[] for _ in range(length)])
             for j in range(length):
-                lt = logits[j, :].numpy()
+                lt = logits[j, :].float().numpy()
                 best_tokens = np.argpartition(lt, -self.n_alternatives)
                 ln = len(best_tokens)
                 best_tokens = best_tokens[ln - self.n_alternatives : ln]

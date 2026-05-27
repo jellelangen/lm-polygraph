@@ -83,15 +83,15 @@ class BaseGreedySemanticMatrixCalculator(StatCalculator):
                 C_tensors.append((contra_probs_f + contra_probs_b) / 2)
 
             # Stack tensors and then convert to numpy arrays at the end
-            E_f = torch.stack(E_f_tensors).cpu().numpy()
-            E_b = torch.stack(E_b_tensors).cpu().numpy()
-            E = torch.stack(E_tensors).cpu().numpy()
-            N_f = torch.stack(N_f_tensors).cpu().numpy()
-            N_b = torch.stack(N_b_tensors).cpu().numpy()
-            N = torch.stack(N_tensors).cpu().numpy()
-            C_f = torch.stack(C_f_tensors).cpu().numpy()
-            C_b = torch.stack(C_b_tensors).cpu().numpy()
-            C = torch.stack(C_tensors).cpu().numpy()
+            E_f = torch.stack(E_f_tensors).float().cpu().float().numpy()
+            E_b = torch.stack(E_b_tensors).float().cpu().float().numpy()
+            E = torch.stack(E_tensors).float().cpu().float().numpy()
+            N_f = torch.stack(N_f_tensors).float().cpu().float().numpy()
+            N_b = torch.stack(N_b_tensors).float().cpu().float().numpy()
+            N = torch.stack(N_tensors).float().cpu().float().numpy()
+            C_f = torch.stack(C_f_tensors).float().cpu().float().numpy()
+            C_b = torch.stack(C_b_tensors).float().cpu().float().numpy()
+            C = torch.stack(C_tensors).float().cpu().float().numpy()
 
         return (E_f, E_b, E, N_f, N_b, N, C_f, C_b, C)
 

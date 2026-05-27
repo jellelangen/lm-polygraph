@@ -101,7 +101,7 @@ class BasePromptCalculator(StatCalculator):
             )
 
         logits = torch.stack(out.scores, dim=1)
-        log_probs = logits[:, -1, expected_token].cpu().numpy()
+        log_probs = logits[:, -1, expected_token].float().cpu().float().numpy()
 
         return {self.method: log_probs}
 

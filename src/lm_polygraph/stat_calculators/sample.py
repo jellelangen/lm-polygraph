@@ -261,11 +261,11 @@ class SamplingGenerationCalculator(StatCalculator):
                 for i in range(batch_size):
                     if len(cur_token_embeddings.shape) > 2:
                         embeddings_last_token[i].append(
-                            cur_token_embeddings[i, -1].cpu().detach().numpy()
+                            cur_token_embeddings[i, -1].float().cpu().detach().float().float().numpy()
                         )
                     else:
                         embeddings_last_token[i].append(
-                            cur_token_embeddings[i].cpu().detach().numpy()
+                            cur_token_embeddings[i].float().cpu().detach().float().float().numpy()
                         )
             result_dict["sample_embeddings"] = embeddings_last_token
         return result_dict

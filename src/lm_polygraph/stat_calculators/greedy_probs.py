@@ -170,10 +170,10 @@ class GreedyProbsCalculator(StatCalculator):
                     break
             cut_sequences.append(seq[:length].tolist())
             cut_texts.append(model.tokenizer.decode(seq[:text_length]))
-            cut_logits.append(logits[i, :length, :].cpu().numpy())
+            cut_logits.append(logits[i, :length, :].float().cpu().float().numpy())
             cut_alternatives.append([[] for _ in range(length)])
             for j in range(length):
-                lt = logits[i, j, :].cpu().numpy()
+                lt = logits[i, j, :].float().cpu().float().numpy()
                 best_tokens = np.argpartition(lt, -self.n_alternatives)
                 ln = len(best_tokens)
                 best_tokens = best_tokens[ln - self.n_alternatives : ln]
@@ -235,19 +235,19 @@ class GreedyProbsCalculator(StatCalculator):
                             torch.float16
                         )  # numpy does not support bfloat16
 
-                    attn_mask[:, j, :j] = stacked_attention.cpu().numpy()
+                    attn_mask[:, j, :j] = stacked_attention.float().cpu().float().numpy()
                 attention_all.append(attn_mask)
 
         if not self.output_hidden_states:
             embeddings_dict = {}
         elif model.model_type == "CausalLM":
             embeddings_dict = {
-                "embeddings_decoder": embeddings_decoder.cpu().detach().numpy(),
+                "embeddings_decoder": embeddings_decoder.float().cpu().detach().float().float().numpy(),
             }
         elif model.model_type == "Seq2SeqLM":
             embeddings_dict = {
-                "embeddings_encoder": embeddings_encoder.cpu().detach().numpy(),
-                "embeddings_decoder": embeddings_decoder.cpu().detach().numpy(),
+                "embeddings_encoder": embeddings_encoder.float().cpu().detach().float().float().numpy(),
+                "embeddings_decoder": embeddings_decoder.float().cpu().detach().float().float().numpy(),
             }
         else:
             raise NotImplementedError
