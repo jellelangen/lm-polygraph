@@ -1,15 +1,10 @@
 defaults:
   - default
 
-path: stabilityai/stablelm-2-12b
+path: mistral-community/Mistral-7B-v0.2
 type: CausalLM
 path_to_load_script: model/default_causal.py
 
 load_model_args:
   device_map: auto
-  torch_dtype: "auto"
-  max_memory:
-    0: "18GiB"
-    1: "38GiB"
-  
 load_tokenizer_args: {}

@@ -1,12 +1,12 @@
 hydra:
   run:
-    dir: ${cache_path}/${task}/${model.path}/coqa/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    dir: ${cache_path}/${task}/${model.path}/gsm8k/${now:%Y-%m-%d}/${now:%H-%M-%S}
 
 defaults:
-  - model: stablelm-2-12b
-  - estimators: default_plus_spline_stablelm12b
+  - model: mistral-7b-v0.2
+  - estimators: default_plus_spline_mistral7b
   - stat_calculators: spline_calculators
-  - base_processing_coqa
+  - base_processing_gsm8k
   - _self_
 
 cache_path: ./workdir/output
@@ -14,31 +14,27 @@ save_path: '${hydra:run.dir}'
 instruct: false
 task: qa
 
-dataset: ['LM-polygraph/coqa', 'continuation']
+dataset: ['LM-Polygraph/gsm8k', 'continuation']
 text_column: input
 label_column: output
 train_split: train
 eval_split: test
-n_shot: 0
-few_shot_split: train
 few_shot_prompt: null
-trust_remote_code: true
-size: null
-max_new_tokens: 20
+max_new_tokens: 256
 load_from_disk: false
+trust_remote_code: false
+size: 10000
 generation_params:
   stop_strings:
     - "\n"
 
+
 generation_metrics:
   - name: AccuracyMetric
-  - name: AlignScore
-    kwargs:
-      target_is_claims: true
 
 subsample_eval_dataset: 2000
 ignore_exceptions: false
-batch_size: 2
+batch_size: 1
 
 seed:
   - 1

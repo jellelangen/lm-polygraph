@@ -53,126 +53,29 @@
 - name: SAR
 - name: SentenceSAR
 
-# ══════════════════════════════════════════════════════════════
-# SPLINE GEOMETRY ESTIMATORS (ours)
-# StableLM 2 12B: 40 layers (0–39), d_ff=14336
-# Layers: 0, 6, 13, 19, 26, 33, 39
-# ══════════════════════════════════════════════════════════════
 
-# SplineQuantile: 3 quantiles × 7 layers
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 0, quantile: 0.05, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 6, quantile: 0.05, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 13, quantile: 0.05, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 19, quantile: 0.05, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 26, quantile: 0.05, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 33, quantile: 0.05, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 39, quantile: 0.05, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 0, quantile: 0.10, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 6, quantile: 0.10, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 13, quantile: 0.10, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 19, quantile: 0.10, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 26, quantile: 0.10, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 33, quantile: 0.10, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 39, quantile: 0.10, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 0, quantile: 0.25, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 6, quantile: 0.25, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 13, quantile: 0.25, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 19, quantile: 0.25, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 26, quantile: 0.25, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 33, quantile: 0.25, agg: "mean" }
-- name: SplineQuantileSequence
-  cfg: { layer_idx: 39, quantile: 0.25, agg: "mean" }
 
-# SplineLocalComplexity: 4 radii × 7 layers
+# SplineQuantile
+- name: SplineQuantileSequence
+  cfg: { layer_idx: 18, quantile: 0.1, agg: "mean" }
+- name: SplineQuantileSequence
+  cfg: { layer_idx: 19, quantile: 0.1, agg: "mean" }
+- name: SplineQuantileSequence
+  cfg: { layer_idx: 20, quantile: 0.1, agg: "mean" }
+  
+# SplineLocalComplexity
 - name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 0, r: 0.05, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 6, r: 0.05, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 13, r: 0.05, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 19, r: 0.05, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 26, r: 0.05, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 33, r: 0.05, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 39, r: 0.05, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 0, r: 0.1, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 6, r: 0.1, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 13, r: 0.1, agg: "mean" }
+  cfg: { layer_idx: 18, r: 0.1, agg: "mean" }
 - name: SplineLocalComplexitySequence
   cfg: { layer_idx: 19, r: 0.1, agg: "mean" }
 - name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 26, r: 0.1, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 33, r: 0.1, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 39, r: 0.1, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 0, r: 0.25, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 6, r: 0.25, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 13, r: 0.25, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 19, r: 0.25, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 26, r: 0.25, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 33, r: 0.25, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 39, r: 0.25, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 0, r: 0.5, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 6, r: 0.5, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 13, r: 0.5, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 19, r: 0.5, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 26, r: 0.5, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 33, r: 0.5, agg: "mean" }
-- name: SplineLocalComplexitySequence
-  cfg: { layer_idx: 39, r: 0.5, agg: "mean" }
+  cfg: { layer_idx: 20, r: 0.1, agg: "mean" }
 
-# SplineHardMin: 7 layers
+
+# SplineHardMin
 - name: SplineHardMinSequence
-  cfg: { layer_idx: 0, agg: "mean" }
+  cfg: { layer_idx: 24, agg: "mean" }
 - name: SplineHardMinSequence
-  cfg: { layer_idx: 6, agg: "mean" }
-- name: SplineHardMinSequence
-  cfg: { layer_idx: 13, agg: "mean" }
-- name: SplineHardMinSequence
-  cfg: { layer_idx: 19, agg: "mean" }
+  cfg: { layer_idx: 25, agg: "mean" }
 - name: SplineHardMinSequence
   cfg: { layer_idx: 26, agg: "mean" }
-- name: SplineHardMinSequence
-  cfg: { layer_idx: 33, agg: "mean" }
-- name: SplineHardMinSequence
-  cfg: { layer_idx: 39, agg: "mean" }

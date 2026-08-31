@@ -1,0 +1,6 @@
+process_output_fn:
+  path: instruct/output_processing_scripts/gsm8k.py
+  fn_name: normalize_number_gsm8k
+process_target_fn:
+  path: instruct/output_processing_scripts/gsm8k.py
+  fn_name: normalize_number_gsm8k
